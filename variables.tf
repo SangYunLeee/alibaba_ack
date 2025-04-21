@@ -17,3 +17,27 @@ variable "availability_zones" {
   description = "가용 영역 목록"
   type        = list(string)
 }
+
+variable "create_bastion" {
+  description = "Bastion 서버 생성 여부"
+  type        = bool
+  default     = false
+}
+
+variable "bastion_instance_type" {
+  description = "Bastion 서버 인스턴스 타입"
+  type        = string
+  default     = "ecs.t5-lc1m1.small"
+}
+
+variable "bastion_image_id" {
+  description = "Bastion 서버 이미지 ID"
+  type        = string
+  default     = "ubuntu_20_04_x64_20G_alibase_20230718.vhd"
+}
+
+variable "bastion_key_name" {
+  description = "Bastion 서버 SSH 키 페어 이름"
+  type        = string
+  default     = "bastion-key"
+}
