@@ -1,6 +1,36 @@
-# Alibaba Cloud VPC Terraform 프로젝트
+# Alibaba Cloud Infrastructure as Code
 
-이 프로젝트는 Terraform을 사용하여 Alibaba Cloud에 VPC와 VSwitch를 생성하는 인프라스트럭처 코드입니다.
+이 프로젝트는 Terraform을 사용하여 Alibaba Cloud 인프라를 코드로 관리합니다.
+
+## 생성되는 리소스
+
+### 1. VPC (Virtual Private Cloud)
+- VPC 이름: `${var.vpc_name}`
+- CIDR 블록: `${var.vpc_cidr}`
+
+### 2. VSwitch
+- VSwitch 이름: `${var.vpc_name}-vswitch`
+- CIDR 블록: `${var.vswitch_cidrs[0]}`
+- 가용 영역: `${var.availability_zones[0]}`
+
+### 3. 보안 그룹
+- 보안 그룹 이름: `${var.vpc_name}-sg`
+- 보안 그룹 규칙:
+  - SSH 접속 (포트 22) 허용
+  - 허용 IP: 211.218.18.43/32
+
+## 파일 구조
+- `vpc.tf`: VPC 리소스 정의
+- `vswitch.tf`: VSwitch 리소스 정의
+- `security_group.tf`: 보안 그룹 및 규칙 정의
+- `variables.tf`: 변수 선언
+- `terraform.tfvars`: 변수 값 설정
+
+## 사용 방법
+1. `terraform.tfvars` 파일에 필요한 변수 값을 설정합니다.
+2. `terraform init` 명령어로 프로바이더를 초기화합니다.
+3. `terraform plan` 명령어로 변경 계획을 확인합니다.
+4. `terraform apply` 명령어로 인프라를 생성합니다.
 
 ## 프로젝트 구조
 
@@ -24,7 +54,7 @@ brew install aliyun-cli
 
 # 설치 확인
 aliyun --version
-aliyun configur
+aliyun configure
 ```
 ## 설정 방법
 
@@ -55,41 +85,6 @@ provider "alicloud" {
 - `vpc_cidr`: VPC CIDR 블록
 - `vswitch_cidrs`: VSwitch CIDR 블록 목록
 - `availability_zones`: 가용 영역 목록
-
-## 사용 방법
-
-1. Terraform 초기화
-```bash
-terraform init
-```
-
-2. 실행 계획 확인
-```bash
-terraform plan
-```
-
-3. 인프라스트럭처 적용
-```bash
-terraform apply
-```
-
-4. 인프라스트럭처 삭제
-```bash
-terraform destroy
-```
-
-## 생성되는 리소스
-
-- 1개의 VPC (CIDR: 10.0.0.0/16)
-- 2개의 VSwitch
-  - VSwitch 1: 10.0.1.0/24 (ap-northeast-1a)
-  - VSwitch 2: 10.0.2.0/24 (ap-northeast-1b)
-
-## 출력값
-
-- `vpc_id`: 생성된 VPC의 ID
-- `vswitch_ids`: 생성된 VSwitch들의 ID
-- `vpc_cidr`: VPC의 CIDR 블록
 
 ## 보안 주의사항
 
