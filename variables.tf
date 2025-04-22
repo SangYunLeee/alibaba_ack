@@ -56,5 +56,5 @@ variable "bastion_password" {
   description = "Bastion 서버 비밀번호"
   type        = string
   sensitive   = true
-  default     = "!ßß"
+  default     = "Vkdlfl1!Rhqnrl1!"
 }
