@@ -36,8 +36,9 @@ variable "bastion_image_id" {
   default     = "ubuntu_20_04_x64_20G_alibase_20230718.vhd"
 }
 
-variable "bastion_key_name" {
-  description = "Bastion 서버 SSH 키 페어 이름"
+variable "bastion_password" {
+  description = "Bastion 서버 비밀번호"
   type        = string
-  default     = "bastion-key"
+  sensitive   = true
+  default     = "mypassword!2#"  # 기본값 설정
 }

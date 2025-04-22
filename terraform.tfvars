@@ -7,4 +7,3 @@ availability_zones = ["cn-hangzhou-g", "cn-hangzhou-h"]
 create_bastion = true
 bastion_instance_type = "ecs.t5-lc1m1.small"
 bastion_image_id = "ubuntu_20_04_x64_20G_alibase_20230718.vhd"
-bastion_key_name = "bastion-key"
