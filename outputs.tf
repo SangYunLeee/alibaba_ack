@@ -3,9 +3,14 @@ output "vpc_id" {
   value       = alicloud_vpc.main.id
 }
 
-output "vswitch_ids" {
-  description = "생성된 VSwitch들의 ID"
-  value       = alicloud_vswitch.main[*].id
+output "public_vswitch_ids" {
+  description = "생성된 퍼블릭 VSwitch들의 ID"
+  value       = alicloud_vswitch.public[*].id
+}
+
+output "private_vswitch_ids" {
+  description = "생성된 프라이빗 VSwitch들의 ID"
+  value       = alicloud_vswitch.private[*].id
 }
 
 output "vpc_cidr" {

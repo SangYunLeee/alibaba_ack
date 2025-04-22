@@ -8,14 +8,30 @@ variable "vpc_cidr" {
   type        = string
 }
 
-variable "vswitch_cidrs" {
-  description = "VSwitch CIDR 블록 목록"
-  type        = list(string)
+variable "public_vswitchs" {
+  description = "퍼블릭 VSwitch 설정 목록"
+  type = list(object({
+    name = string
+    cidr = string
+    zone = string
+  }))
+  default = []
+}
+
+variable "private_vswitchs" {
+  description = "프라이빗 VSwitch 설정 목록"
+  type = list(object({
+    name = string
+    cidr = string
+    zone = string
+  }))
+  default = []
 }
 
 variable "availability_zones" {
   description = "가용 영역 목록"
-  type        = list(string)
+  type        = list(list(string))
+  default     = []
 }
 
 variable "create_bastion" {
@@ -27,7 +43,7 @@ variable "create_bastion" {
 variable "bastion_instance_type" {
   description = "Bastion 서버 인스턴스 타입"
   type        = string
-  default     = "ecs.t5-lc1m1.small"
+  default     = "ecs.t6-c4m1.large"
 }
 
 variable "bastion_image_id" {
@@ -40,5 +56,5 @@ variable "bastion_password" {
   description = "Bastion 서버 비밀번호"
   type        = string
   sensitive   = true
-  default     = "mypassword!2#"  # 기본값 설정
+  default     = "!ßß"
 }

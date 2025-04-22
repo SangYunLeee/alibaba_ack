@@ -5,8 +5,8 @@ resource "alicloud_instance" "bastion" {
   instance_name        = "${var.vpc_name}-bastion"
   instance_type        = var.bastion_instance_type
   image_id             = var.bastion_image_id
-  vswitch_id           = alicloud_vswitch.main.id
-  security_groups      = [alicloud_security_group.main.id]
+  vswitch_id           = alicloud_vswitch.public[0].id
+  security_groups      = [alicloud_security_group.bastion.id]
   password             = var.bastion_password
   system_disk_category = "cloud_efficiency"
   system_disk_size     = 20
