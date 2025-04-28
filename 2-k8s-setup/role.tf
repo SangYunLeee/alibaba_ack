@@ -1,5 +1,5 @@
 resource "alicloud_ram_role" "cs_ai_assistant" {
-  name        = "AliyunCSAIAssistantRole"
+  name        = "AliyunCSAIAssistantRoleTF"
   document    = <<EOF
 {
   "Statement": [
@@ -17,4 +17,10 @@ resource "alicloud_ram_role" "cs_ai_assistant" {
 }
 EOF
   description = "ACK AI Assistant Role"
+}
+
+resource "alicloud_ram_role_policy_attachment" "cs_ai_assistant_policy" {
+  policy_name = "AliyunCSAIAssistantRolePolicy"
+  policy_type = "System"
+  role_name   = alicloud_ram_role.cs_ai_assistant.name
 }

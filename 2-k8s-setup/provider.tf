@@ -11,4 +11,4 @@ provider "alicloud" {
   region = "cn-hangzhou"
 }
 
-https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cs_managed_kubernetes#argument-reference
+# https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cs_managed_kubernetes#argument-reference
