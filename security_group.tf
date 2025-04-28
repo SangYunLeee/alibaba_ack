@@ -49,6 +49,18 @@ resource "alicloud_security_group_rule" "bastion_ssh" {
   cidr_ip           = "211.218.18.43/32"
   description       = "Allow SSH access from specific IP"
 }
+# Workbench 접속 허용
+resource "alicloud_security_group_rule" "bastion_ssh_workbench" {
+  type              = "ingress"
+  ip_protocol       = "tcp"
+  nic_type          = "intranet"
+  policy            = "accept"
+  port_range        = "22/22"
+  priority          = 1
+  security_group_id = alicloud_security_group.bastion.id
+  cidr_ip           = "161.117.0.0/16"
+  description       = "Allow SSH from Workbench"
+}
 
 # 프라이빗 보안 그룹 생성
 resource "alicloud_security_group" "private" {
