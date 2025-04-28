@@ -5,4 +5,4 @@ resource "alicloud_slb_load_balancer" "k8s_slb" {
   vswitch_id         = data.terraform_remote_state.vpc.outputs.private_vswitch_ids[0]
   payment_type       = "PayAsYouGo"
 }
-# test1
+# test12
