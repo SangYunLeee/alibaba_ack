@@ -21,9 +21,13 @@ private_vswitchs = [{
     name = "private-2"
     cidr = "172.31.48.0/20"
     zone = "cn-hangzhou-h"
+}, {
+    name = "private-3"
+    cidr = "172.31.64.0/20"
+    zone = "cn-hangzhou-i"
 }]
 
 # Bastion 서버 설정
-create_bastion = true
+create_bastion = false
 bastion_instance_type = "ecs.t6-c4m1.large"
 bastion_image_id = "ubuntu_20_04_x64_20G_alibase_20230718.vhd"
